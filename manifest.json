@@ -7,11 +7,6 @@
     "lib/GuildBAMNotifier.runtimeconfig.json": "a7dc8f6c0542b6b60bc0c7caedfe050d9a41189ad1d6d27027e790d6ad16cda8",
   },
   "defs": {
-    "S_DESPAWN_NPC": 3,
-    "S_DIALOG": 3,
-    "S_PLAY_EFFECT": 1,
-    "S_PLAY_SOUND_BYNAME": 3,
-    "S_REMOVE_EFFECT": 1,
-    "S_SPAWN_NPC": 12
+    
   }
 }
