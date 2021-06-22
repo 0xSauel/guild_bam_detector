@@ -1,7 +1,11 @@
 {
   "name": "guild-bam-detector",
-  "author": "Unefined",
-  "description": "dunno",
+  "author": "Undefined",
+  "description": "Detecting Guild Bam (WIP)",
   "version": "1.0",
-  "servers": [""]
+  "servers": ["https://raw.githubusercontent.com/0xSauel/guild_bam_detector/master/"],
+  "options": {
+    "cliName": "guild-bam-detector",
+    "guiName": "guild-bam-detector"
+  }
 }
