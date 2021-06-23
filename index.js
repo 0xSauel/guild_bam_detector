@@ -5,15 +5,28 @@ class NotifierLauncher
 {
     constructor(m)
     {
-
-        m.clientInterface.once("ready", () =>
+        this.m = m;
+        this.globalMod().setNetworkMod(this);
+        this.installHooks();
+        
+        this.m.clientInterface.once("ready", () =>
         {
             const gbdPath = Path.join(__dirname, "/lib/GuildBAMNotifier.dll");
-            m.log("Starting Detector...");
-            this.gbd = spawn('dotnet', [gbdPath], {stdio: ['pipe', 'pipe', 'pipe']});            this.gbd.on("exit", () => m.log("GBD Exited dunno why"));
-            this.gbd.stdout.on('data', (data) => m.log(data.toString()))
+            this.m.log("Starting Detector...");
+            this.gbd = spawn('dotnet', [gbdPath], {stdio: ['pipe', 'pipe', 'pipe']});
+            this.gbd.on("exit", () => this.m.log("GBD Exited dunno why"));
+            this.gbd.stdout.on('data', (data) => this.m.log(data.toString()))
             this.gbd.stdin.write("1003\n", 'utf-8')
         });
+    }
+
+    globalMod()
+    {
+        return this.m.globalMod;
+    }
+
+    installHooks()
+    {
     }
 
     destructor(m)
