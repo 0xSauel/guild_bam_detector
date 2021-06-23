@@ -3,30 +3,38 @@ const Path = require("path");
 
 class NotifierLauncher
 {
-    constructor(m)
+    constructor(mod)
     {
-        this.m = m;
-        this.globalMod().setNetworkMod(this);
+        this.mod = mod;
+        this.mod.log("FFS, first line of code is ok")
         this.installHooks();
+
         
-        this.m.clientInterface.once("ready", () =>
+        this.mod.clientInterface.once("ready", () =>
         {
             const gbdPath = Path.join(__dirname, "/lib/GuildBAMNotifier.dll");
-            this.m.log("Starting Detector...");
+            this.mod.log("Starting Detector...");
             this.gbd = spawn('dotnet', [gbdPath], {stdio: ['pipe', 'pipe', 'pipe']});
-            this.gbd.on("exit", () => this.m.log("GBD Exited dunno why"));
-            this.gbd.stdout.on('data', (data) => this.m.log(data.toString()))
+            this.gbd.on("exit", () => this.mod.log("GBD Exited dunno why"));
+            this.gbd.stdout.on('data', (data) => this.mod.log(data.toString()))
             this.gbd.stdin.write("1003\n", 'utf-8')
         });
     }
 
     globalMod()
     {
-        return this.m.globalMod;
+        return this.mod.globalMod;
     }
 
     installHooks()
     {
+    }
+
+    debug(msg)
+    {
+        if (!this.mod.settings.debug) return;
+        // this.mod.command.message(`<font color="#fff1b5">${msg}</font>`);
+        this.mod.log(`${msg}`);
     }
 
     destructor(m)
