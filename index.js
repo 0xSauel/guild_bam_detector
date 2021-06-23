@@ -9,16 +9,12 @@ class NotifierLauncher
         this.mod.log("FFS, first line of code is ok")
         this.installHooks();
 
-        
-        this.mod.clientInterface.once("ready", () =>
-        {
-            const gbdPath = Path.join(__dirname, "/lib/GuildBAMNotifier.dll");
-            this.mod.log("Starting Detector...");
-            this.gbd = spawn('dotnet', [gbdPath], {stdio: ['pipe', 'pipe', 'pipe']});
-            this.gbd.on("exit", () => this.mod.log("GBD Exited dunno why"));
-            this.gbd.stdout.on('data', (data) => this.mod.log(data.toString()))
-            this.gbd.stdin.write("1003\n", 'utf-8')
-        });
+        const gbdPath = Path.join(__dirname, "/lib/GuildBAMNotifier.dll");
+        this.mod.log("Starting Detector...");
+        this.gbd = spawn('dotnet', [gbdPath], {stdio: ['pipe', 'pipe', 'pipe']});
+        this.gbd.on("exit", () => this.mod.log("GBD Exited dunno why"));
+        this.gbd.stdout.on('data', (data) => this.mod.log(data.toString()))
+        this.gbd.stdin.write("1003\n", 'utf-8')
     }
 
     globalMod()
