@@ -1,11 +1,12 @@
 {
   "files": {
-    "index.js": "d47d76e663a63b8c57d3146a7fa634e3cabbe460a1d84374c096112bf309d3e8",
+    "index.js": "8228e2dc1c3908d61c671536c42dc3c7bd4860d59e793529148d8ee0e0b4de6a",
     "module.json": "f4e7f36056b5bb20690e50080c7a00fe5c7c77c59463de0b046938f91532e503",
     "lib/NetCoreServer.dll": "d05f2c16d8212f96a578c10ed4ff00b04717b90fcc8ee609f9e65acac64a762f",
     "lib/GuildBAMNotifier.dll": "8617d31ffed0d7ab4d03c3e13931ae59cb649a485ac500ad797602e26a77ed3d",
     "lib/GuildBAMNotifier.runtimeconfig.json": "a7dc8f6c0542b6b60bc0c7caedfe050d9a41189ad1d6d27027e790d6ad16cda8"
   },
   "defs": {
+    "S_NOTIFY_GUILD_QUEST_URGENT": 1
   }
 }

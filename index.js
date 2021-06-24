@@ -6,6 +6,7 @@ class NotifierLauncher
     constructor(mod)
     {
         this.mod = mod;
+        this.exEvent = 0;
         this.mod.log("FFS, first line of code is ok")
         this.installHooks();
 
@@ -13,8 +14,28 @@ class NotifierLauncher
         this.mod.log("Starting Detector...");
         this.gbd = spawn('dotnet', [gbdPath], {stdio: ['pipe', 'pipe', 'pipe']});
         this.gbd.on("exit", () => this.mod.log("GBD Exited dunno why"));
-        this.gbd.stdout.on('data', (data) => this.mod.log(data.toString()))
-        this.gbd.stdin.write("1003\n", 'utf-8')
+
+        this.mod.hook("S_NOTIFY_GUILD_QUEST_URGENT", 1, ev =>
+        {
+            switch (ev.type) {
+                case 0:
+                    this.exEvent = 10080;
+                    this.mod.log(`Event type: ${ev.type}, msg: ${ev.quest}`);
+                    break;
+                case 1:
+                    this.exEvent = 10081;
+                    this.mod.log(`Event type: ${ev.type}, msg: ${ev.quest}`);
+                    break;
+                case 3:
+                    this.exEvent = 10083;
+                    this.mod.log(`Event type: ${ev.type}, msg: ${ev.quest}`);
+                    break;
+                default:
+                    this.mod.log(`Event type: ${ev.type}, msg: ${ev.quest}`);
+            }
+            this.gbd.stdin.write(`${this.exEvent}\\n`, 'utf-8')
+        });
+
     }
 
     globalMod()
