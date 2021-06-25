@@ -8,8 +8,8 @@ class NotifierLauncher
     constructor(mod)
     {
         this.mod = mod;
-        const notifier = this.mod.require ? this.mod.require.notifier : require('tera-notifier')(this.mod)
-        const MSG = new Message(this.mod)
+        this.notifier = this.mod.require ? this.mod.require.notifier : require('tera-notifier')(this.mod)
+        this.MSG = new Message(this.mod)
 
 
         this.exEvent = 0;
@@ -49,11 +49,8 @@ class NotifierLauncher
 
     }
 
-    commands(mod, msg, notifier)
+    commands()
     {
-        this.mod = mod
-        this.MSG = msg
-
         this.mod.command.add(["gbd"], (arg) => {
             if (!arg) {
                 this.mod.settings.enabled = !this.mod.settings.enabled
@@ -95,7 +92,7 @@ class NotifierLauncher
 
 
     notificationafk(msg, timeout) { // timeout in milsec
-        notifier.notifyafk({
+        this.notifier.notifyafk({
             title: 'NekOWO-Notification',
             message: msg,
             wait: false,
