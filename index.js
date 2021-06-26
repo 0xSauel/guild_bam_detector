@@ -22,7 +22,7 @@ class GuildBamDetector
         // this.notification("Starting Detector...")
 
         this.gbd = spawn('dotnet', [gbdPath], {stdio: ['pipe', 'pipe', 'pipe']});
-        this.gbd.on("exit", e => this.mod.log(`GBD Exited\n, ${e.toString()}`));
+        this.gbd.on("exit", () => this.mod.log(`GBD Exited`));
 
         this.gbd.stdin.write("1003\n", "utf-8");
         this.commands()
