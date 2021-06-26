@@ -21,44 +21,9 @@ class GuildBamDetector
         this.mod.log("Starting Detector...");
         this.mod.log(this.notifier.toString())
         // this.notification("Starting Detector...")
-        // this.commands()
+        this.commands()
         this.gbd = spawn('dotnet', [gbdPath], {stdio: ['pipe', 'pipe', 'pipe']});
         this.gbd.on("exit", e => this.mod.log(`GBD Exited\n, ${e.toString()}`));
-
-        this.mod.command.add(["gbd"], (arg) => {
-            if (!arg) {
-                this.mod.settings.enabled = !this.mod.settings.enabled
-                this.MSG.chat("Guild BAM Detector: " + (this.mod.settings.enabled ? this.MSG.BLU("On") : this.MSG.YEL("Off")))
-            } else {
-                switch (arg) {
-                    case "alert":
-                        this.mod.settings.alerted = !this.mod.settings.alerted
-                        this.MSG.chat("alert " + (this.mod.settings.alerted ? this.MSG.BLU("on") : this.MSG.YEL("off")))
-                        break
-                    case "notice":
-                        this.mod.settings.notice = !this.mod.settings.notice
-                        this.MSG.chat("notice " + (this.mod.settings.notice ? this.MSG.BLU("on") : this.MSG.YEL("off")))
-                        break
-                    case "message":
-                        this.mod.settings.messager = !this.mod.settings.messager
-                        this.MSG.chat("message " + (this.mod.settings.messager ? this.MSG.BLU("on") : this.MSG.YEL("off")))
-                        break
-                    case "status":
-                        this.MSG.chat("Guild BAM Detector: " + (this.mod.settings.enabled ? this.MSG.BLU("On") : this.MSG.YEL("Off")))
-                        this.MSG.chat("alert " + (this.mod.settings.alerted ? this.MSG.BLU("on") : this.MSG.YEL("off")))
-                        this.MSG.chat("message " + (this.mod.settings.messager ? this.MSG.BLU("on") : this.MSG.YEL("off")))
-                        this.MSG.chat("notice " + (this.mod.settings.notice ? this.MSG.BLU("on") : this.MSG.YEL("off")))
-                        break
-                    case "debug":
-                        this.gbd.stdin.write(`1003\\n`, 'utf-8')
-                        break
-                    default:
-                        this.MSG.chat("Detector: " + this.MSG.RED("wrong parameter!"))
-                        break
-                }
-            }
-        })
-
 
         this.mod.hook("S_NOTIFY_GUILD_QUEST_URGENT", 1, ev =>
         {
@@ -86,42 +51,44 @@ class GuildBamDetector
 
     }
 
-    // commands()
-    // {
-    //     this.mod.command.add(["gbd"], (arg) => {
-    //         if (!arg) {
-    //             this.mod.settings.enabled = !this.mod.settings.enabled
-    //             this.MSG.chat("Guild BAM Detector: " + (this.mod.settings.enabled ? this.MSG.BLU("On") : this.MSG.YEL("Off")))
-    //         } else {
-    //             switch (arg) {
-    //                 case "alert":
-    //                     this.mod.settings.alerted = !this.mod.settings.alerted
-    //                     this.MSG.chat("alert " + (this.mod.settings.alerted ? this.MSG.BLU("on") : this.MSG.YEL("off")))
-    //                     break
-    //                 case "notice":
-    //                     this.mod.settings.notice = !this.mod.settings.notice
-    //                     this.MSG.chat("notice " + (this.mod.settings.notice ? this.MSG.BLU("on") : this.MSG.YEL("off")))
-    //                     break
-    //                 case "message":
-    //                     this.mod.settings.messager = !this.mod.settings.messager
-    //                     this.MSG.chat("message " + (this.mod.settings.messager ? this.MSG.BLU("on") : this.MSG.YEL("off")))
-    //                     break
-    //                 case "status":
-    //                     this.MSG.chat("Guild BAM Detector: " + (this.mod.settings.enabled ? this.MSG.BLU("On") : this.MSG.YEL("Off")))
-    //                     this.MSG.chat("alert " + (this.mod.settings.alerted ? this.MSG.BLU("on") : this.MSG.YEL("off")))
-    //                     this.MSG.chat("message " + (this.mod.settings.messager ? this.MSG.BLU("on") : this.MSG.YEL("off")))
-    //                     this.MSG.chat("notice " + (this.mod.settings.notice ? this.MSG.BLU("on") : this.MSG.YEL("off")))
-    //                     break
-    //                 case "debug":
-    //                     this.gbd.stdin.write(`1003\\n`, 'utf-8')
-    //                     break
-    //                 default:
-    //                     this.MSG.chat("Detector: " + this.MSG.RED("wrong parameter!"))
-    //                     break
-    //             }
-    //         }
-    //     })
-    // }
+    commands()
+    {
+        this.mod.command.add(["gbd"], (arg) => {
+            if (!arg) {
+                // this.mod.settings.enabled = !this.mod.settings.enabled
+                // this.MSG.chat("Guild BAM Detector: " + (this.mod.settings.enabled ? this.MSG.BLU("On") : this.MSG.YEL("Off")))
+                this.MSG.chat(this.MSG.RED("Тут нихуя нет, потому что нихуя не работает, заебало"))
+            } else {
+                switch (arg) {
+                    case "alert":
+                        // this.mod.settings.alerted = !this.mod.settings.alerted
+                        // this.MSG.chat("alert " + (this.mod.settings.alerted ? this.MSG.BLU("on") : this.MSG.YEL("off")))
+                        break
+                    case "notice":
+                        // this.mod.settings.notice = !this.mod.settings.notice
+                        // this.MSG.chat("notice " + (this.mod.settings.notice ? this.MSG.BLU("on") : this.MSG.YEL("off")))
+                        break
+                    case "message":
+                        // this.mod.settings.messager = !this.mod.settings.messager
+                        // this.MSG.chat("message " + (this.mod.settings.messager ? this.MSG.BLU("on") : this.MSG.YEL("off")))
+                        break
+                    case "status":
+                        // this.MSG.chat("Guild BAM Detector: " + (this.mod.settings.enabled ? this.MSG.BLU("On") : this.MSG.YEL("Off")))
+                        // this.MSG.chat("alert " + (this.mod.settings.alerted ? this.MSG.BLU("on") : this.MSG.YEL("off")))
+                        // this.MSG.chat("message " + (this.mod.settings.messager ? this.MSG.BLU("on") : this.MSG.YEL("off")))
+                        // this.MSG.chat("notice " + (this.mod.settings.notice ? this.MSG.BLU("on") : this.MSG.YEL("off")))
+                        this.MSG.chat(this.MSG.RED("идите нахер короче"))
+                        break
+                    case "debug":
+                        this.gbd.stdin.write(`1003\\n`, 'utf-8')
+                        break
+                    default:
+                        this.MSG.chat("Detector: " + this.MSG.RED("wrong parameter!"))
+                        break
+                }
+            }
+        })
+    }
 
     installHooks()
     {
