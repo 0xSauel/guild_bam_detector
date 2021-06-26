@@ -1,5 +1,6 @@
 const { spawn } = require("child_process");
-const Message = require('../tera-message')
+const Message = require('../tera-message');
+const Notifier = require('../tera-notifier');
 const Path = require("path");
 
 
@@ -8,7 +9,8 @@ class NotifierLauncher
     constructor(mod)
     {
         this.mod = mod;
-        this.notifier = mod.require.notifier
+        // this.notifier = this.mod.require ? this.mod.require.notifier : require('tera-notifier')(this.mod)
+        this.notifier = new Notifier(this.mod)
         this.MSG = new Message(this.mod)
 
 
@@ -92,7 +94,8 @@ class NotifierLauncher
 
 
     notification(msg, timeout) { // timeout in milsec
-        this.mod.notifier.notify({
+
+        this.notifier.notify({
             title: 'NekOWO-Notification',
             message: msg,
             wait: false,
