@@ -3,7 +3,7 @@
   "author": "Undefined",
   "description": "Detecting Guild Bam (WIP)",
   "version": "1.0",
-  "servers": ["https://raw.githubusercontent.com/0xSauel/guild_bam_detector/master/"],
+  "servers": ["https://raw.githubusercontent.com/0xSauel/guild_bam_detector/test/"],
   "dependencies": {
     "notifier": "https://raw.githubusercontent.com/PatrickSantoZZ/tera-notifier/master/module.json",
     "tera-message": "https://raw.githubusercontent.com/PatrickSantoZZ/tera-message/master/module.json"

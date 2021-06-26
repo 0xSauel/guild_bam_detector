@@ -9,9 +9,11 @@ class GuildBamDetector
     {
         this.mod = mod;
         const notifier = mod.require ? mod.require.notifier : require('tera-notifier')(mod)
-        this.notifier = notifier
+        this.notifier = new notifier()
         this.MSG = new Message(this.mod)
 
+        this.mod.log(typeof notifier)
+        this.mod.log(typeof this.notifier)
 
         this.exEvent = 0;
         this.mod.log("FFS, first line of code is ok")
