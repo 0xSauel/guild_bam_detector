@@ -1,6 +1,5 @@
 const { spawn } = require("child_process");
 const Message = require('../tera-message');
-const Notifier = require('../notifier')
 const Path = require("path");
 
 
@@ -10,7 +9,8 @@ class GuildBamDetector
     {
         // stupid comment here
         this.mod = mod;
-        this.notifier = new Notifier(this.mod)
+        const notifier = mod.require ? mod.require.notifier : require('notifier')(mod)
+        this.notifier = notifier
         this.MSG = new Message(this.mod)
 
         this.exEvent = 0;
