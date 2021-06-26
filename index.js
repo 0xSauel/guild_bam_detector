@@ -1,6 +1,6 @@
 const { spawn } = require("child_process");
 const Message = require('../tera-message');
-const Notifier = require('../tera-notifier');
+const Notifier = require('tera-notifier');
 const Path = require("path");
 
 
