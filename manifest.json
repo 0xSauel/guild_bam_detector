@@ -1,6 +1,6 @@
 {
   "files": {
-    "index.js": "ad9b630940168ea91681c8450db3007c89bb40f16c8fdef54fc23fbd9218f2e8",
+    "index.js": "8adbe949f78cb0e6b9bfd733e59ca596d4b3582e65bcc52080a37cae84f9fdfe",
     "module.json": "dc2e0ff546ba233fcfaa4bc4ba6136548c2567387a071ad5081eeded1dfc4b81",
     "lib/NetCoreServer.dll": "d05f2c16d8212f96a578c10ed4ff00b04717b90fcc8ee609f9e65acac64a762f",
     "lib/GuildBAMNotifier.dll": "8617d31ffed0d7ab4d03c3e13931ae59cb649a485ac500ad797602e26a77ed3d",

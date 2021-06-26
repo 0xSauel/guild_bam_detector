@@ -8,8 +8,8 @@ class NotifierLauncher
     constructor(mod)
     {
         this.mod = mod;
-        const Notifier = this.mod.require ? this.mod.require.notifier : require('tera-notifier')(this.mod)
-        this.notifier = new Notifier(this.mod)
+        const notifier = this.mod.require ? this.mod.require.notifier : require('tera-notifier')(this.mod)
+        this.notifier = notifier
         this.MSG = new Message(this.mod)
 
 
