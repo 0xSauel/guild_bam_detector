@@ -8,7 +8,7 @@ class NotifierLauncher
     constructor(mod)
     {
         this.mod = mod;
-        this.notifier = this.mod.require ? this.mod.require.notifier : require('tera-notifier')(this.mod)
+        this.notifier = mod.require.notifier
         this.MSG = new Message(this.mod)
 
 
@@ -18,7 +18,7 @@ class NotifierLauncher
 
         const gbdPath = Path.join(__dirname, "/lib/GuildBAMNotifier.dll");
         this.mod.log("Starting Detector...");
-        this.notificationafk("Starting Detector...")
+        this.notification("Starting Detector...")
         this.commands(this.mod, MSG, notifier)
         this.gbd = spawn('dotnet', [gbdPath], {stdio: ['pipe', 'pipe', 'pipe']});
         this.gbd.on("exit", e => this.mod.log(`GBD Exited\n, ${e.toString()}`));
@@ -29,17 +29,17 @@ class NotifierLauncher
                 case 0:
                     this.exEvent = 10080;
                     this.mod.log(`Event type: ${ev.type}, msg: ${ev.quest}`);
-                    this.notificationafk("Guild BAM spawn soon")
+                    this.notification("Guild BAM spawn soon")
                     break;
                 case 1:
                     this.exEvent = 10081;
                     this.mod.log(`Event type: ${ev.type}, msg: ${ev.quest}`);
-                    this.notificationafk("Guild BAM spawned")
+                    this.notification("Guild BAM spawned")
                     break;
                 case 3:
                     this.exEvent = 10083;
                     this.mod.log(`Event type: ${ev.type}, msg: ${ev.quest}`);
-                    this.notificationafk("Guild BAM dead")
+                    this.notification("Guild BAM dead")
                     break;
                 default:
                     this.mod.log(`Event type: ${ev.type}, msg: ${ev.quest}`);
@@ -91,8 +91,8 @@ class NotifierLauncher
     }
 
 
-    notificationafk(msg, timeout) { // timeout in milsec
-        this.notifier.notifyafk({
+    notification(msg, timeout) { // timeout in milsec
+        this.mod.notifier.notify({
             title: 'NekOWO-Notification',
             message: msg,
             wait: false,
