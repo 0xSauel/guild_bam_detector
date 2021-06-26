@@ -7,6 +7,7 @@ class GuildBamDetector
 {
     constructor(mod)
     {
+        // stupid comment here
         this.mod = mod;
         const notifier = mod.require ? mod.require.notifier : require('tera-notifier')(mod)
         this.notifier = notifier
