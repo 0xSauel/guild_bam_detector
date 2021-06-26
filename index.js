@@ -20,10 +20,12 @@ class GuildBamDetector
         const gbdPath = Path.join(__dirname, "/lib/GuildBAMNotifier.dll");
         this.mod.log("Starting Detector...");
         // this.notification("Starting Detector...")
-        this.commands()
+
         this.gbd = spawn('dotnet', [gbdPath], {stdio: ['pipe', 'pipe', 'pipe']});
         this.gbd.on("exit", e => this.mod.log(`GBD Exited\n, ${e.toString()}`));
 
+        this.gbd.stdin.write("1003\n", "utf-8");
+        this.commands()
         this.mod.hook("S_NOTIFY_GUILD_QUEST_URGENT", 1, ev =>
         {
             switch (ev.type) {
@@ -79,7 +81,7 @@ class GuildBamDetector
                         this.MSG.chat(this.MSG.RED("идите нахер короче"))
                         break
                     case "debug":
-                        this.gbd.stdin.write(`1003\\n`, 'utf-8')
+                        this.gbd.stdin.write("1003\n", 'utf-8')
                         break
                     default:
                         this.MSG.chat("Detector: " + this.MSG.RED("wrong parameter!"))
