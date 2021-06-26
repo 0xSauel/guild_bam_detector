@@ -105,6 +105,7 @@ class GuildBamDetector
         this.notifier.notify({
             title: 'NekOWO-Notification',
             message: msg,
+            icon: Path.join(__dirname,'tera.png'),
             wait: false,
             sound: 'Notification.IM',
         }, timeout)
