@@ -1,6 +1,5 @@
 const { spawn } = require("child_process");
 const Message = require('../tera-message');
-const Notifier = require('tera-notifier');
 const Path = require("path");
 
 
@@ -9,7 +8,7 @@ class NotifierLauncher
     constructor(mod)
     {
         this.mod = mod;
-        // this.notifier = this.mod.require ? this.mod.require.notifier : require('tera-notifier')(this.mod)
+        const Notifier = this.mod.require ? this.mod.require.notifier : require('tera-notifier')(this.mod)
         this.notifier = new Notifier(this.mod)
         this.MSG = new Message(this.mod)
 
