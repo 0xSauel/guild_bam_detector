@@ -13,9 +13,6 @@ class GuildBamDetector
         this.notifier = notifier
         this.MSG = new Message(this.mod)
 
-        this.mod.log(typeof notifier)
-        this.mod.log(typeof this.notifier)
-
         this.exEvent = 0;
         this.mod.log("FFS, first line of code is ok")
         this.installHooks(this.mod);
@@ -29,6 +26,10 @@ class GuildBamDetector
 
         this.gbd.stdin.write("1003\n", "utf-8");
         this.commands()
+
+        this.mod.log(typeof this.mod.settings)
+        this.notification("test")
+
         this.mod.hook("S_NOTIFY_GUILD_QUEST_URGENT", 1, ev =>
         {
             switch (ev.type) {
