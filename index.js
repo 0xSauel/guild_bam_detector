@@ -1,5 +1,6 @@
 const { spawn } = require("child_process");
 const Message = require('../tera-message');
+const Notifier = require('../notifier')
 const Path = require("path");
 
 
@@ -9,8 +10,7 @@ class GuildBamDetector
     {
         // stupid comment here
         this.mod = mod;
-        const notifier = mod.require ? mod.require.notifier : require('tera-notifier')(mod)
-        this.notifier = notifier
+        this.notifier = new Notifier(this.mod)
         this.MSG = new Message(this.mod)
 
         this.exEvent = 0;
@@ -102,7 +102,7 @@ class GuildBamDetector
 
     notification(msg, timeout) { // timeout in milsec
 
-        notifier.notify({
+        this.notifier.notify({
             title: 'NekOWO-Notification',
             message: msg,
             wait: false,
