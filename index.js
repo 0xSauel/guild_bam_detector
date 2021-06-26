@@ -19,7 +19,6 @@ class GuildBamDetector
 
         const gbdPath = Path.join(__dirname, "/lib/GuildBAMNotifier.dll");
         this.mod.log("Starting Detector...");
-        this.mod.log(this.notifier.toString())
         // this.notification("Starting Detector...")
         this.commands()
         this.gbd = spawn('dotnet', [gbdPath], {stdio: ['pipe', 'pipe', 'pipe']});
