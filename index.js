@@ -9,11 +9,8 @@ class GuildBamDetector
         this.mod = mod;
         const gbdPath = Path.join(__dirname, "/lib/GuildBAMNotifier.dll");
         this.mod.log("Starting Detector...");
-        this.mod.log(`Current ServerID is: ${this.mod.game.me.serverId}`)
-
         this.gbd = spawn('dotnet', [gbdPath], {stdio: ['pipe', 'pipe', 'pipe']});
         this.gbd.on("exit", () => this.mod.log(`GBD Exited`));
-        this.gbd.stdin.write("1003\n", "utf-8");
         this.installHooks();
     }
 
@@ -21,8 +18,8 @@ class GuildBamDetector
     {
         this.mod.hook("S_NOTIFY_GUILD_QUEST_URGENT", 1, ev =>
         {
-            this.mod.log(`Event type: 1008${ev.type}, msg: ${ev.quest}`);
-            this.gbd.stdin.write(`1008${ev.type}\n`, 'utf-8')
+            this.mod.log(`Event type: 108${ev.type}, msg: ${ev.quest}`);
+            this.gbd.stdin.write(`108${this.mod.game.me.serverId}${ev.type}\n`, 'utf-8')
         });
     }
 
